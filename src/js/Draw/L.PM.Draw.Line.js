@@ -321,6 +321,7 @@ Draw.Line = Draw.extend({
 
     // create the leaflet shape and add it to the map
     const polylineLayer = L.polyline(coords, this.options.pathOptions);
+    polylineLayer.feature = this._layer.feature;
     this._setPane(polylineLayer, 'layerPane');
     this._finishLayer(polylineLayer);
     polylineLayer.addTo(this._map.pm._getContainingLayer());
