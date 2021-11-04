@@ -225,9 +225,17 @@ const Draw = L.Class.extend({
     return !!this._hintMarker;
   },
   showHintMarker() {
+    if (!this.hasHintMarker()) {
+      return;
+    }
+    
     this._hintMarker.addTo(this._map);
   },
   hideHintMarker() {
+    if (!this.hasHintMarker()) {
+      return;
+    }
+
     this._hintMarker.remove();
   },
   toggleHintMarker(state) {
