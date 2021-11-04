@@ -221,6 +221,30 @@ const Draw = L.Class.extend({
     const map = this._map || this._layer._map;
     return map.pm.getGeomanLayers().length === 0;
   },
+  hasHintMarker() {
+    return !!this._hintMarker;
+  },
+  showHintMarker() {
+    this._hintMarker.addTo(this._map);
+  },
+  hideHintMarker() {
+    this._hintMarker.remove();
+  },
+  toggleHintMarker(state) {
+    if (!this.hasHintMarker()) {
+      return;
+    }
+
+    if (state === undefined) {
+      state = !this._map.hasLayer(this._hintMarker);
+    }
+
+    if (state) {
+      this.showHintMarker();
+    } else {
+      this.hideHintMarker();
+    }
+  },
 });
 
 export default Draw;
