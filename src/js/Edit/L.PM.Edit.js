@@ -107,6 +107,38 @@ const Edit = L.Class.extend({
     }
     return true;
   },
+  hasMarkerGroup() {
+    return !!this._markerGroup;
+  },
+  showMarkerGroup() {
+    if (!this.hasMarkerGroup()) {
+      return;
+    }
+    
+    this._markerGroup.addTo(this._map);
+  },
+  hideMarkerGroup() {
+    if (!this.hasMarkerGroup()) {
+      return;
+    }
+
+    this._markerGroup.remove();
+  },
+  toggleMarkerGroup(state) {
+    if (!this.hasMarkerGroup()) {
+      return;
+    }
+
+    if (state === undefined) {
+      state = !this._map.hasLayer(this._markerGroup);
+    }
+
+    if (state) {
+      this.showMarkerGroup();
+    } else {
+      this.hideMarkerGroup();
+    }
+  },
 });
 
 export default Edit;
