@@ -186,7 +186,7 @@ Edit.Line = Edit.extend({
   },
 
   // creates initial markers for coordinates
-  _createMarker(latlng) {
+  _createMarker(latlng, index) {
     const marker = new L.Marker(latlng, {
       draggable: true,
       icon: L.divIcon({ className: 'marker-icon' }),
@@ -195,6 +195,9 @@ Edit.Line = Edit.extend({
 
     marker._pmTempLayer = true;
     marker._pmLayer = this; // save reference to this layer on the marker
+    if (index) {
+      marker._pmMarkerIndex = index
+    }
 
     if (this.options.rotate) {
       marker.on('dragstart', this._onRotateStart, this);
