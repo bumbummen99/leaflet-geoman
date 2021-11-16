@@ -834,6 +834,11 @@ Edit.Line = Edit.extend({
     this._layerEdited = true;
   },
   _onVertexClick(e) {
+    // Run onVertexClick callback and stop if false
+    if (this.options.onVertexClick && ! this.options.onVertexClick(e)) {
+      return;
+    }
+
     const vertex = e.target;
     if (vertex._dragging) {
       return;
