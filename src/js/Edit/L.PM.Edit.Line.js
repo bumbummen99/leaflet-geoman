@@ -194,6 +194,7 @@ Edit.Line = Edit.extend({
     this._setPane(marker, 'vertexPane');
 
     marker._pmTempLayer = true;
+    marker._pmLayer = this; // save reference to this layer on the marker
 
     if (this.options.rotate) {
       marker.on('dragstart', this._onRotateStart, this);
